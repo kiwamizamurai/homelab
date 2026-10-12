@@ -1,10 +1,6 @@
-# 完成図（目標構成）
+# 設計図
 
-最終的に目指す構成。作りながら見直す。
-状態: **計画中**（実機は未構築）
-図のファイル: [diagrams/homelab.drawio](docs/diagrams/homelab.drawio)（draw.io で編集）、[diagrams/homelab.png](docs/diagrams/homelab.png)（画像）
-
-![homelab 完成図](docs/diagrams/homelab.png)
+![homelab 設計図](docs/diagrams/homelab.png)
 
 ## 構成一覧
 
@@ -20,7 +16,7 @@
 | 家族のアクセス | Tailscale のタグとポートで、サービスのポートだけに制限。管理者は全許可 |
 | ネットワーク | フラットな LAN |
 | ストレージ | UGREEN NASync DH2300（2 ベイ、1GbE、Docker なし） |
-| バックアップ | **取る**（ツールは restic を検討中。保存先は未決） |
+| バックアップ | restic |
 | 監視 | Prometheus + Grafana + Uptime Kuma |
 
 ### Kubernetes
@@ -93,9 +89,6 @@ flowchart TB
 | dns | LXC | AdGuard Home |
 | Traefik | Pod | ingress |
 | Jellyfin、Home Assistant、Vaultwarden、Immich、Forgejo、Uptime Kuma、Prometheus + Grafana | Pod | 各サービス |
-
-各 VM / Pod の CPU・メモリの割り当ては**未決**。実機で動かして実測してから決める。
-kubeadm の公式要件は、1台あたり RAM 2GB 以上、コントロールプレーンは 2 CPU 以上。
 
 ## OCI の構成要素
 
