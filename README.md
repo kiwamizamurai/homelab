@@ -2,6 +2,7 @@
 
 最終的に目指す構成。作りながら見直す。
 状態: **計画中**（実機は未構築）
+図のファイル: [diagrams/homelab.drawio](docs/diagrams/homelab.drawio)（draw.io で編集）、[diagrams/homelab.png](docs/diagrams/homelab.png)（画像）
 
 ![homelab 完成図](docs/diagrams/homelab.png)
 
