@@ -10,10 +10,10 @@
 |---|---|
 | ホスト OS | Proxmox VE |
 | DNS | AdGuard Home |
-| 独自ドメイン | 取らない |
+| 独自ドメイン | 取得しない |
 | 外出先からのアクセス | Tailscale のみ |
-| 認証 | 各サービス個別（1人1アカウント）+ Tailscale 経由のみ |
-| 家族のアクセス | Tailscale のタグとポートで、サービスのポートだけに制限。管理者は全許可 |
+| 認証 | 各サービスで個別に認証する（1 人 1 アカウント）。アクセスは Tailscale 経由のみ |
+| 家族のアクセス | Tailscale のタグとポートの設定で、家族はサービスのポートだけにアクセスできる。管理者はすべてのポートにアクセスできる |
 | ネットワーク | フラットな LAN |
 | ストレージ | UGREEN NASync DH2300（2 ベイ、1GbE、Docker なし） |
 | バックアップ | restic |
@@ -23,12 +23,12 @@
 
 | 項目 | 内容 |
 |---|---|
-| K8s | **必須** |
+| K8s | 必須 |
 | ディストリビューション | kubeadm |
-| 自宅側の構成 | **案 B: Proxmox + K8s 用の VM 1台（CP とワーカーを兼用）** |
+| 自宅側の構成 | 案 B: Proxmox の上に K8s 用の VM を 1 台作る（コントロールプレーンとワーカーを兼ねる） |
 | コンテナランタイム | containerd |
 | 自宅のサービス | K8s の Pod |
-| OCI ワーカー | Arm 1台（2 OCPU / 12GB） |
+| OCI ワーカー | Arm 1 台（2 OCPU / 12GB） |
 | CNI | Cilium |
 | デプロイ | GitOps（Argo CD） |
 | OCI のアクセス | Tailscale 内のみ |
@@ -94,7 +94,7 @@ flowchart TB
 
 | 名前 | 中身 |
 |---|---|
-| k8s-worker | Arm 1台（VM.Standard.A1.Flex、2 OCPU / 12GB）、Cilium |
+| k8s-worker | Arm 1 台（VM.Standard.A1.Flex、2 OCPU / 12GB）、Cilium |
 | Argo CD | GitOps コントローラ |
 | 実験 Pod 群 | 学習用のワークロード |
 | Uptime Kuma（外部） | 自宅サービスの外部監視 |
